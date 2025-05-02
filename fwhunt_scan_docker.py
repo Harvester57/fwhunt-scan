@@ -11,6 +11,7 @@ import click
 logging.basicConfig(
     format="%(name)s %(asctime)s %(levelname)s: %(message)s",
     datefmt="%m/%d/%Y %I:%M:%S %p",
+    level=os.environ.get("PYTHON_LOG", "INFO"),
 )
 logger = logging.getLogger("fwhunt_scan")
 
@@ -30,7 +31,7 @@ def build():
 
 
 @click.command()
-@click.argument("module_path")
+@click.argument("path")
 def analyze(path: str) -> bool:
     """Analyze single EFI file."""
 
@@ -99,7 +100,7 @@ def scan(path: str, rule: List[str]) -> bool:
     cmd += rules_cmd
     cmdstr = " ".join(cmd)
 
-    logger.debug(f"Commamd: {cmdstr}")
+    logger.debug(f"Command: {cmdstr}")
 
     os.system(cmdstr)
 
@@ -163,14 +164,13 @@ def scan_firmware(
         rules_cmd += ["-r", f"/tmp/{name}"]
 
     if rules_dir:
-        _, name = os.path.split(rules_dir)
-        cmd += ["-v", f"{os.path.realpath(rules_dir)}:/tmp/{name}:ro"]
-        rules_cmd += ["--rules_dir", f"/tmp/{name}"]
+        cmd += ["-v", f"{os.path.realpath(rules_dir)}:/tmp/rules:ro"]
+        rules_cmd += ["-d", f"/tmp/rules"]
 
     cmd += rules_cmd
     cmdstr = " ".join(cmd)
 
-    logger.debug(f"Commamd: {cmdstr}")
+    logger.debug(f"Command: {cmdstr}")
 
     os.system(cmdstr)
 
@@ -178,6 +178,7 @@ def scan_firmware(
 
 
 cli.add_command(build)
+cli.add_command(analyze)
 cli.add_command(analyze, "analyze-module")
 cli.add_command(analyze, "analyze-bootloader")
 cli.add_command(scan)
