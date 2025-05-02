@@ -164,9 +164,8 @@ def scan_firmware(
         rules_cmd += ["-r", f"/tmp/{name}"]
 
     if rules_dir:
-        _, name = os.path.split(rules_dir)
-        cmd += ["-v", f"{os.path.realpath(rules_dir)}:/tmp/{name}:ro"]
-        rules_cmd += ["--rules_dir", f"/tmp/{name}"]
+        cmd += ["-v", f"{os.path.realpath(rules_dir)}:/tmp/rules:ro"]
+        rules_cmd += ["-d", f"/tmp/rules"]
 
     cmd += rules_cmd
     cmdstr = " ".join(cmd)
