@@ -12,8 +12,13 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import yaml
 
-from fwhunt_scan.uefi_analyzer import (NvramVariable, UefiAnalyzer, UefiGuid,
-                                       UefiProtocol, UefiService)
+from fwhunt_scan.uefi_analyzer import (
+    NvramVariable,
+    UefiAnalyzer,
+    UefiGuid,
+    UefiProtocol,
+    UefiService,
+)
 
 logger = logging.getLogger(__name__)
 

@@ -20,6 +20,7 @@ from fwhunt_scan import UefiAnalyzer, UefiExtractor, UefiRule, UefiScanner
 logging.basicConfig(
     format="%(name)s %(asctime)s %(levelname)s: %(message)s",
     datefmt="%m/%d/%Y %I:%M:%S %p",
+    level=os.environ.get("PYTHON_LOG", "INFO"),
 )
 logger = logging.getLogger("fwhunt_scan")
 

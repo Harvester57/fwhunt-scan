@@ -11,6 +11,7 @@ import click
 logging.basicConfig(
     format="%(name)s %(asctime)s %(levelname)s: %(message)s",
     datefmt="%m/%d/%Y %I:%M:%S %p",
+    level=os.environ.get("PYTHON_LOG", "INFO"),
 )
 logger = logging.getLogger("fwhunt_scan")
 
@@ -99,7 +100,7 @@ def scan(path: str, rule: List[str]) -> bool:
     cmd += rules_cmd
     cmdstr = " ".join(cmd)
 
-    logger.debug(f"Commamd: {cmdstr}")
+    logger.debug(f"Command: {cmdstr}")
 
     os.system(cmdstr)
 
@@ -170,7 +171,7 @@ def scan_firmware(
     cmd += rules_cmd
     cmdstr = " ".join(cmd)
 
-    logger.debug(f"Commamd: {cmdstr}")
+    logger.debug(f"Command: {cmdstr}")
 
     os.system(cmdstr)
 
