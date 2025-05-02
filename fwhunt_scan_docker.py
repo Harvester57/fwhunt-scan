@@ -30,7 +30,7 @@ def build():
 
 
 @click.command()
-@click.argument("module_path")
+@click.argument("path")
 def analyze(path: str) -> bool:
     """Analyze single EFI file."""
 
@@ -178,6 +178,7 @@ def scan_firmware(
 
 
 cli.add_command(build)
+cli.add_command(analyze)
 cli.add_command(analyze, "analyze-module")
 cli.add_command(analyze, "analyze-bootloader")
 cli.add_command(scan)
