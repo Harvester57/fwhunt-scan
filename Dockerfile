@@ -1,8 +1,9 @@
-FROM python:3.13
+FROM python:3.13-slim@sha256:6544e0e002b40ae0f59bc3618b07c1e48064c4faed3a15ae2fbd2e8f663e8283
 
 LABEL org.opencontainers.image.source=https://github.com/binarly-io/fwhunt-scan
 
-ARG rz_version=v0.7.4
+# Cf. https://github.com/rizinorg/rizin/releases
+ARG rz_version=v0.8.1
 
 # add library paths
 ENV LD_LIBRARY_PATH=/tmp/rizin-$rz_version/build/librz/core
@@ -15,8 +16,7 @@ RUN useradd -u 1001 -m fwhunt_scan
 
 # install rizin from source code
 WORKDIR /tmp
-RUN wget https://github.com/rizinorg/rizin/releases/download/$rz_version/rizin-src-$rz_version.tar.xz
-RUN tar -xvf rizin-src-$rz_version.tar.xz
+RUN wget https://github.com/rizinorg/rizin/releases/download/$rz_version/rizin-src-$rz_version.tar.xz && tar -xf rizin-src-$rz_version.tar.xz
 
 WORKDIR /tmp/rizin-$rz_version
 RUN meson build
