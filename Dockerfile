@@ -7,9 +7,8 @@ ARG rz_version=v0.7.4
 # add library paths
 ENV LD_LIBRARY_PATH=/tmp/rizin-$rz_version/build/librz/core
 
-RUN apt-get update
-RUN apt-get install -y ninja-build parallel
-RUN pip install meson==1.0.0
+RUN apt-get update && apt-get install -y ninja-build parallel
+RUN pip install meson
 
 # add fwhunt_scan unprivileged user
 RUN useradd -u 1001 -m fwhunt_scan
