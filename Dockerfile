@@ -2,7 +2,7 @@ FROM python:3.13
 
 LABEL org.opencontainers.image.source=https://github.com/binarly-io/fwhunt-scan
 
-ARG rz_version=v0.6.2
+ARG rz_version=v0.7.4
 
 # add library paths
 ENV LD_LIBRARY_PATH=/tmp/rizin-$rz_version/build/librz/core
