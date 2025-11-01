@@ -4,11 +4,12 @@ LABEL org.opencontainers.image.source=https://github.com/binarly-io/fwhunt-scan
 
 # Cf. https://github.com/rizinorg/rizin/releases
 ARG rz_version=v0.8.1
+ARG DEBIAN_FRONTEND=noninteractive
 
 # add library paths
 ENV LD_LIBRARY_PATH=/tmp/rizin-$rz_version/build/librz/core
 
-RUN apt-get update && apt-get install -y ninja-build parallel wget build-essential
+RUN apt-get update && apt-get install -y ninja-build parallel wget build-essential && apt-get full-upgrade -y
 RUN pip install meson
 
 # add fwhunt_scan unprivileged user
