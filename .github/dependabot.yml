@@ -5,22 +5,6 @@
 
 version: 2
 updates:
-- package-ecosystem: "github-actions"
-  directory: "/"
-  commit-message:
-    prefix: "actions"
-  labels: [ 'github_actions' ]
-  assignees:
-  - "Harvester57"
-  schedule:
-    interval: "cron"
-    cronjob: "0 7 * * *"
-    timezone: "Europe/Paris"
-  groups:
-    actions-dependencies:
-      applies-to: version-updates
-      patterns:
-      - "*"
 - package-ecosystem: "docker"
   directory: "/"
   commit-message:
