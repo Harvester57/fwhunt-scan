@@ -1,4 +1,4 @@
-FROM python:3.15.0a2-slim@sha256:513b1348eb32b063c4b84224d9fdb40c65eeb87eda128840c0c7aa4b5b9bb4a6
+FROM python:3.15.0a3-slim@sha256:a1dc4e6b84bf9fcf568520ea158961bac118170841ce21baa9458918812135fc
 
 LABEL org.opencontainers.image.source=https://github.com/binarly-io/fwhunt-scan
 
