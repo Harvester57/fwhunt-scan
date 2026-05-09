@@ -1,6 +1,13 @@
 FROM python:3.15.0b1-slim@sha256:89a7e6cfaeb87cc9884cf07c481a760b11e501b3dca0b31fa25d9360ab1e12f9
 
-LABEL org.opencontainers.image.source=https://github.com/binarly-io/fwhunt-scan
+LABEL org.opencontainers.image.title="fwhunt-scan" \
+      org.opencontainers.image.description="Tools for analyzing UEFI firmware and checking UEFI modules with FwHunt rules" \
+      org.opencontainers.image.url=https://github.com/binarly-io/fwhunt-scan \
+      org.opencontainers.image.documentation=https://github.com/binarly-io/fwhunt-scan/blob/master/README.md \
+      org.opencontainers.image.source=https://github.com/binarly-io/fwhunt-scan \
+      org.opencontainers.image.vendor="Binarly Inc" \
+      org.opencontainers.image.licenses=GPL-3.0-only \
+      org.opencontainers.image.version="2.3.8"
 
 # Cf. https://github.com/rizinorg/rizin/releases
 ARG rz_version=v0.8.2
