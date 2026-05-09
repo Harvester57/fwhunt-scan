@@ -19,7 +19,8 @@ RUN wget https://github.com/rizinorg/rizin/releases/download/$rz_version/rizin-s
 
 WORKDIR /tmp/rizin-$rz_version
 RUN meson build && \
-    ninja -C build install
+    ninja -C build install && \
+    rm -rf /tmp/rizin-$rz_version
 
 # install fwhunt_scan
 COPY fwhunt_scan_analyzer.py /home/fwhunt_scan/app/
