@@ -1,4 +1,4 @@
-FROM python:3.15.0b1-slim@sha256:7605301fda7393226ed12611693f905b7768cb74bdf7c2c95030d9e8d54801f2
+FROM python:3.15.0b2-slim@sha256:f889a83e8ccc8050f6e34dd0e13be6d8e66e0f629631288f47d1891765f9380e
 
 LABEL org.opencontainers.image.title="fwhunt-scan" \
       org.opencontainers.image.description="Tools for analyzing UEFI firmware and checking UEFI modules with FwHunt rules" \
