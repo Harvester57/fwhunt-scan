@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: [ "3.9", "3.10", "3.11", "3.12", "3.13", "3.14" ]
+        python-version: [  "3.10", "3.11", "3.12", "3.13", "3.14" ]
 
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
@@ -23,12 +23,14 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           cache: 'pip'
-          pip-install: flake8 pytest
+
+      - name: Install Python deps
+        run: pipx install flake8 pytest
 
       - name: Lint with flake8
         run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
 
       - name: Test with pytest
         run: |
-          pip install -r requirements.txt
+          pipx install -r requirements.txt
           pytest
