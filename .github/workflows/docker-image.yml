@@ -18,6 +18,7 @@ permissions:
 jobs:
   build:
     permissions:
+      actions: read
       contents: write
       packages: write
       # This is used to complete the identity challenge
